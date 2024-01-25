@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+html,
+body {
+  height: 100vh;
+  width: 100%;
+  background-color: #002A3C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 4%;
+}
+
+.title {
+  color: #EBF2FA;
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.calculator {
+  width: 400px;
+  background-color: #002A3C;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.display {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  border: 2px solid #EBF2FA;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.display .previousDisplay,
+.display .currentDisplay {
+  height: 50%;
+}
+
+.display .previousDisplay {
+  color: #427AA1;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.display .currentDisplay {
+  color: #EBF2FA;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 0.5rem;
+  grid-template-rows: repeat(5, 50px);
+}
+
+.buttons .cancel {
+  grid-column: 1/span 2;
+}
+
+.buttons .zero {
+  grid-column: 1/span 3;
+}
+
+.buttons .btn {
+  background-color: #002A3C;
+  border: 1px solid #EBF2FA;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.buttons .btn:hover {
+  background-color: #335f7d;
+  border: none;
+  color: #EBF2FA;
+}
+
+.buttons .operator {
+  color: #427AA1;
+}
+
+.buttons .operator:hover {
+  background-color: #335f7d;
+  border: none;
+  color: #EBF2FA;
+}
+
+.buttons .cancel,
+.buttons .clear {
+  color: #A14242;
+}
+
+.buttons .cancel:hover,
+.buttons .clear:hover {
+  background-color: #A14242;
+  color: #EBF2FA;
+  border: none;
+}
+
+.buttons .number,
+.buttons .equal {
+  color: #EBF2FA;
+}
+
+.buttons .number:hover,
+.buttons .equal:hover {
+  background-color: #c2d7f0;
+  border: none;
+  color: #427AA1;
+}/*# sourceMappingURL=styles.css.map */
