@@ -2,6 +2,7 @@
 let previous = document.getElementById('previous');
 // Get the element with id 'current'
 let current = document.getElementById('current');
+let currentDate = document.getElementById('date');
 // Get the element with class 'clear'
 let clear = document.querySelector('.clear');
 // Get the element with class 'cancel'
@@ -95,6 +96,8 @@ clear.addEventListener('click', clearCurrent);
 cancel.addEventListener('click', clearAll);
 
 // Set the initial value of the current input field to 0 when the window loads
+// Set the initial value of the date field to the current year when the window loads
 window.onload = () => {
   current.textContent = 0;
+  currentDate.textContent = new Date().getFullYear();
 };
