@@ -1,66 +1,100 @@
+$font-color: #EBF2FA;
+$background-color: #002A3C;
+$hover-background-color: #335f7d;
+$font-family: "Poppins", sans-serif;
+$font-weight: 600;
+$font-size: 1.5rem;
+$border-radius: 10px;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@mixin hover-effect {
+  &:hover {
+    background-color: $hover-background-color;
+    border: none;
+    color: $font-color;
+  }
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: $font-family;
 }
 
-html,
-body {
-  height: 100vh;
-  width: 100%;
-  background-color: #002A3C;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+html, body {
+  background-color: $background-color;
   padding: 0 4%;
 }
 
-.title {
-  color: #EBF2FA;
-  font-size: 1.5rem;
-  font-weight: 900;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-}
-
 .calculator {
-  width: 400px;
-  background-color: #002A3C;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  display: flex;
+  @include flex-center;
   flex-direction: column;
-  padding: 20px;
+  height: 100dvh;
+  
+  .calculator__components {
+    @include flex-center;
+    flex-direction: column;
+    background-color: $background-color;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    padding: 1.5rem;
+    
+    .title {
+      color: $font-color;
+      font-size: $font-size;
+      font-weight: 900;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    
+    .calculator__sections {
+      width: 100%;
+    }
+  }
 }
 
 .display {
-  display: flex;
+  @include flex-end;
   flex-direction: column;
   height: 100px;
-  border: 2px solid #EBF2FA;
-  border-radius: 10px;
+  border: 2px solid $font-color;
+  border-radius: $border-radius;
   padding: 10px;
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: $font-size;
+  font-weight: $font-weight;
   text-align: right;
   margin-bottom: 10px;
-}
-.display .previousDisplay,
-.display .currentDisplay {
-  height: 50%;
-}
-.display .previousDisplay {
-  color: #427AA1;
-  font-size: 1.2rem;
-  font-weight: 400;
-}
-.display .currentDisplay {
-  color: #EBF2FA;
-  font-size: 1.5rem;
-  font-weight: 600;
+  
+  .previousDisplay, .currentDisplay {
+    height: 50%;
+  }
+  
+  .previousDisplay {
+    color: #427AA1;
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+  
+  .currentDisplay {
+    color: $font-color;
+    font-size: $font-size;
+    font-weight: $font-weight;
+  }
 }
 
 .buttons {
@@ -68,53 +102,100 @@ body {
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 0.5rem;
   grid-template-rows: repeat(5, 50px);
+  
+  .cancel {
+    grid-column: 1/span 2;
+  }
+  
+  .zero {
+    grid-column: 1/span 3;
+  }
+  
+  .btn {
+    background-color: $background-color;
+    border: 1px solid $font-color;
+    border-radius: $border-radius;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    font-weight: $font-weight;
+    
+    @include hover-effect;
+  }
+  
+  .operator {
+    color: #427AA1;
+    
+    @include hover-effect;
+  }
+  
+  .cancel, .clear {
+    color: #A14242;
+    
+    &:hover {
+      background-color: #A14242;
+      color: $font-color;
+      border: none;
+    }
+  }
+  
+  .number, .equal {
+    color: $font-color;
+    
+    &:hover {
+      background-color: #c2d7f0;
+      border: none;
+      color: #427AA1;
+    }
+  }
 }
-.buttons .cancel {
-  grid-column: 1/span 2;
+
+.author {
+  @include flex-center;
+  color: $font-color;
+  font-size: 0.7rem;
+  font-weight: 400;
+  margin-top: 20px;
+  p {
+    a {
+      color: $font-color;
+      text-decoration: none;
+    }
+  }
 }
-.buttons .zero {
-  grid-column: 1/span 3;
-}
-.buttons .btn {
-  background-color: #002A3C;
-  border: 1px solid #EBF2FA;
-  border-radius: 10px;
-  padding: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-size: 1rem;
-  font-weight: 600;
-}
-.buttons .btn:hover {
-  background-color: #335f7d;
-  border: none;
-  color: #EBF2FA;
-}
-.buttons .operator {
-  color: #427AA1;
-}
-.buttons .operator:hover {
-  background-color: #335f7d;
-  border: none;
-  color: #EBF2FA;
-}
-.buttons .cancel,
-.buttons .clear {
-  color: #A14242;
-}
-.buttons .cancel:hover,
-.buttons .clear:hover {
-  background-color: #A14242;
-  color: #EBF2FA;
-  border: none;
-}
-.buttons .number,
-.buttons .equal {
-  color: #EBF2FA;
-}
-.buttons .number:hover,
-.buttons .equal:hover {
-  background-color: #c2d7f0;
-  border: none;
-  color: #427AA1;
+
+@media (max-width: 420px) {
+
+  .calculator {
+    .calculator__components {
+      width: 90%;
+      padding: 1rem;
+    }
+    .title {
+      font-size: 1rem !important;
+    }
+  }
+
+  .display {
+    height: 80px;
+    font-size: 1.2rem;
+    
+    .previousDisplay {
+      font-size: 1rem;
+    }
+    
+    .currentDisplay {
+      font-size: 1.2rem;
+    }
+  }
+
+  .buttons {
+    grid-template-rows: repeat(5, 40px);
+    
+    .btn {
+      font-size: 0.8rem;
+      padding: 5px;
+    }
+  }
 }
